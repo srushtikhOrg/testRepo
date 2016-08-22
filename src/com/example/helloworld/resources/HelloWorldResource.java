@@ -1,15 +1,16 @@
 package com.example.helloworld.resources;
 
-import com.example.helloworld.api.Saying;
-import com.google.common.base.Optional;
-import com.codahale.metrics.annotation.Timed;
+import java.util.concurrent.atomic.AtomicLong;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-import java.util.concurrent.atomic.AtomicLong;
+
+import com.codahale.metrics.annotation.Timed;
+import com.example.helloworld.api.Saying;
+import com.google.common.base.Optional;
 
 @Path("/hello-world")
 @Produces(MediaType.APPLICATION_JSON)
@@ -30,4 +31,15 @@ public class HelloWorldResource {
         final String value = String.format(template, name.or(defaultName));
         return new Saying(counter.incrementAndGet(), value);
     }
+    
+    /*
+    @POST
+	@Path("/post")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response createTagInJSON(String "dfg") {
+
+		String result = "Tag saved : " + tag;
+		return Response.status(asd).entity(result).build();
+		
+	}*/
 }
